@@ -15,13 +15,16 @@ let errorOccurs = false;
 
 //Sample video effect
 function videoFrameHandler(videoFrame, notifyVideoProcessed, notifyError) {
-  const maxLen = (videoFrame.height * videoFrame.width) / Math.max(1, appliedEffect.proportion) - 4;
-  for (let i = 1; i < maxLen; i += 4) {
-    //smaple effect just change the value to 100, which effect some pixel value of video frame
-    videoFrame.data[i + 1] = appliedEffect.pixelValue;
-  }
+  // const maxLen = (videoFrame.height * videoFrame.width) / Math.max(1, appliedEffect.proportion) - 4;
+  // for (let i = 1; i < maxLen; i += 4) {
+  //   //smaple effect just change the value to 100, which effect some pixel value of video frame
+  //   videoFrame.data[i + 1] = appliedEffect.pixelValue;
+  // }
 
-  console.log("videoFrame", videoFrame);
+  for (let i = 0; i < videoFrame.data.length; i++) {
+    // Invert the colors
+    videoFrame.data[i] = 255 - videoFrame.data[i];
+  }
 
   //send notification the effect processing is finshed.
   notifyVideoProcessed();
