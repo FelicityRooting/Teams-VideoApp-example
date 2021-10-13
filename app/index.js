@@ -28,6 +28,7 @@ function videoFrameHandler(videoFrame, notifyVideoProcessed, notifyError) {
       videoFrame.data[i] = 0; 
     }
   }
+  console.log("videoFrame", videoFrame.data[0]);
 
   //send notification the effect processing is finshed.
   notifyVideoProcessed();
