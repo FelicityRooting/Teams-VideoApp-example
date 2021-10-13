@@ -4,7 +4,7 @@ microsoftTeams.initialize(() => {}, [
 
 // This is the effect for processing
 let appliedEffect = {
-  pixelValue: 100,
+  pixelValue: 255,
   proportion: 3,
 };
 
@@ -21,9 +21,9 @@ function videoFrameHandler(videoFrame, notifyVideoProcessed, notifyError) {
   //   videoFrame.data[i + 1] = appliedEffect.pixelValue;
   // }
 
-  for (let i = 0; i < videoFrame.data.length; i+=10) {
+  for (let i = 0; i < videoFrame.data.length; i++) {
     // Invert the colors
-    videoFrame.data[i] = 200 - videoFrame.data[i]; 
+    videoFrame.data[i] = appliedEffect.pixelValue - videoFrame.data[i]; 
   }
 
   //send notification the effect processing is finshed.
